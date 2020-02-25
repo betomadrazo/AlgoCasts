@@ -11,18 +11,35 @@
 function chunk(array, size) {
   let chunked = [];
 
-  let cut = [];
-  for (let i of array) {
-    if (cut.length < size) {
-      cut.push(i);
-    } else {
-      chunked.push(cut);
-      cut = [];
-      cut.push(i);
-    }
-  }
-  if (cut.length) {
-    chunked.push(cut);
+  // My solution:
+  // let cut = [];
+  // for (let i of array) {
+  //   if (cut.length < size) {
+  //     cut.push(i);
+  //   } else {
+  //     chunked.push(cut);
+  //     cut = [];
+  //     cut.push(i);
+  //   }
+  // }
+  // if (cut.length) {
+  //   chunked.push(cut);
+  // }
+
+  // Stephen's solution (like a boss):
+  // for (let element of array) {
+  //   const last = chunked[chunked.length-1];
+  //   if (!last || last.length === size) {
+  //     chunked.push([element]);
+  //   } else {
+  //     last.push(element);
+  //   }
+  // }
+
+  let index = 0;
+  while (index < array.length) {
+    chunked.push(array.slice(index, index + size));
+    index += size;
   }
 
   return chunked;

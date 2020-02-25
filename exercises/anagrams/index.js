@@ -9,13 +9,20 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 function anagrams(stringA, stringB) { // 48-57; 97, 122
-  return removeSpecialChars(stringA) === removeSpecialChars(stringB);
+  // My solution:
+  // return removeSpecialChars(stringA) === removeSpecialChars(stringB);
+  return formatString(stringA) === formatString(stringB);
 }
 
-function removeSpecialChars(string) {
-  return string.toLowerCase().replace(' ', '').split('').filter(ch => { 
-    return ch.charCodeAt(0) > 96 && ch.charCodeAt(0) < 123;
-  }).sort().join(''); 
+function formatString(string) {
+  return string.replace(/[^\w]/g, '').toLowerCase().sort();
 }
+
+// My solution:
+// function removeSpecialChars(string) {
+//   return string.toLowerCase().replace(' ', '').split('').filter(ch => { 
+//     return ch.charCodeAt(0) > 96 && ch.charCodeAt(0) < 123;
+//   }).sort().join(''); 
+// }
 
 module.exports = anagrams;
