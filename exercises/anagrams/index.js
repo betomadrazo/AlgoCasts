@@ -8,6 +8,14 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
-function anagrams(stringA, stringB) {}
+function anagrams(stringA, stringB) { // 48-57; 97, 122
+  return removeSpecialChars(stringA) === removeSpecialChars(stringB);
+}
+
+function removeSpecialChars(string) {
+  return string.toLowerCase().replace(' ', '').split('').filter(ch => { 
+    return ch.charCodeAt(0) > 96 && ch.charCodeAt(0) < 123;
+  }).sort().join(''); 
+}
 
 module.exports = anagrams;
